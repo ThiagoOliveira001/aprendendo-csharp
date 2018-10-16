@@ -8,7 +8,7 @@ namespace banco
 {
     class ContaCorrente : Conta
     {
-        private double taxa { get; set; } = 2;
+        public double taxa { get; private set; } = 2;
 
         public ContaCorrente(int numero, double saldo) :base(numero,saldo)
         {
@@ -16,13 +16,18 @@ namespace banco
 
         public override void depositar(double valor)
         {
-            this.Saldo += valor;
+            this.saldo += valor;
         }
 
         public override void sacar(double valor)
         {
-            this.Saldo -= this.taxa;
-            this.Saldo -= valor;
+            this.saldo -= this.taxa;
+            this.saldo -= valor;
+        }
+
+        public override double getSaldo()
+        {
+            return this.saldo;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace banco
                         ct.sacar(valor);
                         break;
                     case 3:
-                        Console.WriteLine("Saldo: R$" + ct.saldo);
+                        Console.WriteLine("Saldo: R$" + ct.getSaldo());
                         break;
                     case 0:
                         Console.WriteLine("Tchau!");
@@ -65,7 +65,6 @@ namespace banco
                     default:
                         Console.WriteLine("Opcao invalida!");
                         break;
-
                 }
            }
 

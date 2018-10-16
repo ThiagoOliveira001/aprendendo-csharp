@@ -14,12 +14,17 @@ namespace banco
 
         public override void depositar(double valor)
         {
-            this.Saldo += valor;
+            this.saldo += valor;
         }
 
         public override void sacar(double valor)
         {
-            this.Saldo -= valor;
+            this.saldo -= valor;
         }
+
+        public override double getSaldo()
+        {
+            return this.saldo;
+        } 
     }
 }
