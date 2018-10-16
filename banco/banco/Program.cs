@@ -57,7 +57,7 @@ namespace banco
                         ct.sacar(valor);
                         break;
                     case 3:
-                        Console.WriteLine("Saldo: R$" + ct.getSaldo());
+                        Console.WriteLine("Saldo: R$" + ct.saldo);
                         break;
                     case 0:
                         Console.WriteLine("Tchau!");

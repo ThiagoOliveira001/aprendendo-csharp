@@ -8,8 +8,8 @@ namespace banco
 {
     abstract class Conta
     {
-        protected int numero { get; set; }
-        protected double saldo { get; set; }
+        public int numero { get; protected set; }
+        public double saldo { get; protected set; }
 
         public Conta(int numero, double saldo)
         {
@@ -20,7 +20,5 @@ namespace banco
         public abstract void depositar(double valor);
 
         public abstract void sacar(double valor);
-
-        public abstract double getSaldo();
     }
 }

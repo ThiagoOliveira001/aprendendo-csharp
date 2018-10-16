@@ -25,9 +25,5 @@ namespace banco
             this.saldo -= valor;
         }
 
-        public override double getSaldo()
-        {
-            return this.saldo;
-        }
     }
 }
