@@ -1,0 +1,7 @@
+C:\Users\thiago.oliveira\source\repos\banco\banco\bin\Debug\banco.exe.config
+C:\Users\thiago.oliveira\source\repos\banco\banco\bin\Debug\banco.exe
+C:\Users\thiago.oliveira\source\repos\banco\banco\bin\Debug\banco.pdb
+C:\Users\thiago.oliveira\source\repos\banco\banco\obj\Debug\banco.csprojAssemblyReference.cache
+C:\Users\thiago.oliveira\source\repos\banco\banco\obj\Debug\banco.csproj.CoreCompileInputs.cache
+C:\Users\thiago.oliveira\source\repos\banco\banco\obj\Debug\banco.exe
+C:\Users\thiago.oliveira\source\repos\banco\banco\obj\Debug\banco.pdb
