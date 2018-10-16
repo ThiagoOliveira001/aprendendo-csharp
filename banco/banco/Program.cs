@@ -10,6 +10,9 @@ namespace banco
     {
         static void Main(string[] args)
         {
+            dynamic ct = new ContaCorrente(0,0);
+            double valor;
+
             Console.WriteLine("Opcoes");
             Console.WriteLine("1 - Criar conta corrente");
             Console.WriteLine("2 - Criar conta poupanca");
@@ -22,11 +25,11 @@ namespace banco
            
            if (opcao == 1)
            {
-                ContaCorrente ct = new ContaCorrente(numero, saldo);
+                ct = new ContaCorrente(numero, saldo);
            }
            else if (opcao == 2)
            {
-                ContaPoupanca ct = new ContaPoupanca(numero, saldo);
+                ct = new ContaPoupanca(numero, saldo);
            }
            else
            {
@@ -45,9 +48,24 @@ namespace banco
                 {
                     case 1:
                         Console.WriteLine("Valor do deposito:");
-                        double valor = Convert.ToDouble(Console.ReadLine());
-                        //ct.depositar(valor);
+                        valor = Convert.ToDouble(Console.ReadLine());
+                        ct.depositar(valor);
                         break;
+                    case 2:
+                        Console.WriteLine("Valor do saque:");
+                        valor = Convert.ToDouble(Console.ReadLine());
+                        ct.sacar(valor);
+                        break;
+                    case 3:
+                        Console.WriteLine("Saldo: R$" + ct.saldo);
+                        break;
+                    case 0:
+                        Console.WriteLine("Tchau!");
+                        break;
+                    default:
+                        Console.WriteLine("Opcao invalida!");
+                        break;
+
                 }
            }
 

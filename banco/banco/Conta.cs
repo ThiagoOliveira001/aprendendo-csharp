@@ -8,19 +8,17 @@ namespace banco
 {
     abstract class Conta
     {
-        protected int numero;
-        protected double saldo;
+        protected int numero { get; set; }
+        protected double Saldo { get; set; }
 
         public Conta(int numero, double saldo)
         {
             this.numero = numero;
-            this.saldo = saldo;
+            this.Saldo = saldo;
         }
 
         public abstract void depositar(double valor);
 
         public abstract void sacar(double valor);
-
-        public abstract double getSaldo();
     }
 }
