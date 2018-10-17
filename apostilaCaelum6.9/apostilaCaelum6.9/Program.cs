@@ -11,22 +11,26 @@ namespace apostilaCaelum6._9
     {
         static void Main(string[] args)
         {
-            Cliente mia = new Cliente("Mia Pereira");
+            Cliente mia = new Cliente("Mia Pereira")
+            {
+                cpf = "52416542",
+                rg = "23846237858723",
+                endereco = "Rua das palmeiras"
+            };
             Conta ct = new Conta(mia, 1);
 
-            Console.WriteLine("Titular {0}", ct.titular.nome);
+            Console.WriteLine("Titular {0}", ct.Titular.nome);
 
-            ct.titular.rg = "55679487";
+            ct.Titular.rg = "55679487";
+            ct.Numero = 2;
             if(mia.setDtNascimento("07/03/1997"))
             {
-                Console.WriteLine("Idade {0}", mia.idade);
+                Console.WriteLine("Idade {0} N Conta: {1}", mia.idade,ct.Numero);
             } else
             {
                 Console.WriteLine("Data inválida");
             }
             
-
-           int s = 1 + 1;
         }
     }
 }

@@ -9,11 +9,11 @@ namespace apostilaCaelum6._9
 {
     class Cliente
     {
-        public string nome { get; set; }
-        public string rg { get; set; }
-        public string cpf { get; set; }
-        public string endereco { get; set; }
-        public int idade { get; set; }
+        public string nome;
+        public string rg;
+        public string cpf;
+        public string endereco;
+        public int idade { get; private set; }
         private string dtNascimento;
         Regex ER = new Regex(@"\d{2}\/\d{2}\/\d{4}",RegexOptions.None);
 

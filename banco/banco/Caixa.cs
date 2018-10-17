@@ -8,7 +8,7 @@ namespace banco
 {
     class Caixa
     {
-        private int codigo { get; set; }
+        private int Codigo { get; set; }
 
         public Caixa()
         {
@@ -20,20 +20,20 @@ namespace banco
         public int criarContaCorrente(double saldo)
         {
             contas.Add(new ContaCorrente(contas.Count + 1, saldo));
-            return contas[contas.Count - 1].numero;
+            return contas[contas.Count - 1].Numero;
         }
 
         public int criarContaPoupanca(double saldo)
         {
             contas.Add(new ContaPoupanca(contas.Count + 1, saldo));
-            return contas[contas.Count - 1].numero;
+            return contas[contas.Count - 1].Numero;
         }
 
         public string setConta(int numero)
         {
-            if (contas.Exists(x => x.numero == numero))
+            if (contas.Exists(x => x.Numero == numero))
             {
-                this.codigo = contas.FindIndex(x => x.numero == numero);
+                this.Codigo = contas.FindIndex(x => x.Numero == numero);
                 return "Conta encontrada com sucesso.";
             }
             else
@@ -44,17 +44,17 @@ namespace banco
 
         public double getSaldo()
         {
-            return contas[this.codigo].saldo;
+            return contas[this.Codigo].Saldo;
         }
 
         public void sacar(double valor)
         {
-            contas[this.codigo].sacar(valor);
+            contas[this.Codigo].sacar(valor);
         }
 
         public void depositar(double valor)
         {
-            contas[this.codigo].depositar(valor);
+            contas[this.Codigo].depositar(valor);
         }
 
         public string getContas()
@@ -62,7 +62,7 @@ namespace banco
             string str = "";
             foreach (Conta ct in contas)
             {
-                str += ct.numero;
+                str += ct.Numero;
                 str += "\n";
             }
             return str;

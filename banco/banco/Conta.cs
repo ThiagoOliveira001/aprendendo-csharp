@@ -8,13 +8,13 @@ namespace banco
 {
     abstract class Conta
     {
-        public int numero { get; protected set; }
-        public double saldo { get; protected set; }
+        public int Numero { get; protected set; }
+        public double Saldo { get; protected set; }
 
         public Conta(int numero, double saldo)
         {
-            this.numero = numero;
-            this.saldo = saldo;
+            this.Numero = numero;
+            this.Saldo = saldo;
         }
 
         public abstract void depositar(double valor);

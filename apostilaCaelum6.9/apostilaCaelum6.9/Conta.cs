@@ -6,24 +6,49 @@ using System.Threading.Tasks;
 
 namespace apostilaCaelum6._9
 {
-    class Conta
-    {
-        public int numero;
-        public Cliente titular;
-        public double saldo;
+     public class Conta
+     {
+        private int numero;
+        public int Numero
+        {
+            get
+            {
+                return this.numero;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    this.numero = value;
+                }
+            }
+        }
+        private Cliente titular;
+        public Cliente Titular
+        {
+            get
+            {
+                return this.titular;
+            }
+            set
+            {
+                this.titular = value;
+            }
+        }
+        public double Saldo { get; private set; }
 
         public Conta(Cliente titular, int numero, double saldo = 100)
         {
             this.titular = titular;
             this.numero = numero;
-            this.saldo = saldo;
+            this.Saldo = saldo;
         }
 
         public bool saca(double valor)
         {
-            if (this.saldo >= valor)
+            if (this.Saldo >= valor)
             {
-                this.saldo -= valor;
+                this.Saldo -= valor;
                 return true;
             }
             else
@@ -34,7 +59,7 @@ namespace apostilaCaelum6._9
 
         public void depositar(double valor)
         {
-            this.saldo += valor;
+            this.Saldo += valor;
         }
 
         public bool transfere(double valor, Conta destino)
