@@ -123,8 +123,7 @@ namespace banco
                         goto MenuSimulador;
                     default:
                         Console.WriteLine("Opção invalida");
-                        goto MenuSimulador;
-                    
+                        goto MenuSimulador;  
                 }
             }
         }

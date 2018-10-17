@@ -1,0 +1,7 @@
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\bin\Debug\apostilaCaelum6.9.exe.config
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\bin\Debug\apostilaCaelum6.9.exe
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\bin\Debug\apostilaCaelum6.9.pdb
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\obj\Debug\apostilaCaelum6.9.csprojAssemblyReference.cache
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\obj\Debug\apostilaCaelum6.9.csproj.CoreCompileInputs.cache
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\obj\Debug\apostilaCaelum6.9.exe
+C:\Users\thiago.oliveira\source\repos\apostilaCaelum6.9\apostilaCaelum6.9\obj\Debug\apostilaCaelum6.9.pdb
