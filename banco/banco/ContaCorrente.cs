@@ -10,8 +10,9 @@ namespace banco
     {
         public double taxa { get; private set; } = 2;
 
-        public ContaCorrente(int numero, double saldo) :base(numero,saldo)
+        public ContaCorrente(int numero, double saldo,Cliente titular) :base(numero,saldo,titular)
         {
+            this.Info = "Conta Corrente";
         }
 
         public override void depositar(double valor)

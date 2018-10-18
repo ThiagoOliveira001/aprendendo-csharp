@@ -11,8 +11,39 @@ namespace banco
         static void Main(string[] args)
         {
             double valor;
+            int opcao;
             Caixa cx = new Caixa();
             Simulador sm = new Simulador();
+            Cliente clienteLogado = new Cliente();
+        MenuCliente:
+            Console.WriteLine("1 - Cadastrar");
+            Console.WriteLine("2 - Entrar (Digite seu codigo para acessar)");
+            Console.WriteLine("3 - Ver Clientes");
+            Console.WriteLine("0 - Sair");
+            opcao = Convert.ToInt32(Console.ReadLine());
+            switch (opcao)
+            {
+                case 1:
+                    Console.WriteLine("Nome:");
+                    string nome = Console.ReadLine();
+                    Console.WriteLine("CPF:");
+                    string cpf = Console.ReadLine();
+                    Console.WriteLine("Codigo: {0}",cx.cadastrarCliente(nome, cpf));
+                    goto MenuCliente;
+                case 2:
+                    Console.WriteLine("Codigo:");
+                    clienteLogado = cx.getCliente(Convert.ToInt32(Console.ReadLine()));
+                    goto Menu;
+                case 3:
+                    Console.WriteLine("Clientes: \n" + cx.getClientes());
+                    goto MenuCliente;
+                case 0:
+                    goto Finish;
+                default:
+                    Console.WriteLine("Opcao invalida!");
+                    goto MenuCliente;
+            }
+        
         Menu:
             for (;;)
             {
@@ -22,7 +53,7 @@ namespace banco
                 Console.WriteLine("3 - Ver contas");
                 Console.WriteLine("4 - Simular investimento");
                 Console.WriteLine("0 - Encerrar operacao");
-                int opcao = Convert.ToInt32(Console.ReadLine());
+                opcao = Convert.ToInt32(Console.ReadLine());
 
                 if (opcao == 1 || opcao == 2)
                 {
@@ -30,12 +61,12 @@ namespace banco
                     double saldo = Convert.ToDouble(Console.ReadLine());
                     if (opcao == 1)
                     {
-                        Console.WriteLine("Numero da conta: {0}", cx.criarContaCorrente(saldo));
+                        Console.WriteLine("Numero da conta: {0}", cx.criarContaCorrente(saldo, clienteLogado));
                         continue;
                     }
                     else if (opcao == 2)
                     {
-                        Console.WriteLine("Numero da conta: {0}", cx.criarContaPoupanca(saldo));
+                        Console.WriteLine("Numero da conta: {0}", cx.criarContaPoupanca(saldo, clienteLogado));
                         continue;
                     }
                 }
@@ -65,6 +96,7 @@ namespace banco
                     Console.WriteLine("1 - Depositar");
                     Console.WriteLine("2 - Sacar");
                     Console.WriteLine("3 - Saldo");
+                    Console.WriteLine("4 - Cartao");
                     Console.WriteLine("0 - Sair");
                     opcao = Convert.ToInt32(Console.ReadLine());
                     switch (opcao)
@@ -82,6 +114,8 @@ namespace banco
                         case 3:
                             Console.WriteLine("Saldo: R${0}", cx.getSaldo());
                             goto MenuConta;
+                        case 4:
+                            goto MenuCartao;
                         case 0:
                             goto Menu;
                         default:
@@ -121,11 +155,88 @@ namespace banco
                         porcentagens = Array.ConvertAll(str.Split(','), Double.Parse);
                         Console.WriteLine("Valor final R${0}",sm.calculaInvestimentoBolsa(valor, porcentagens));
                         goto MenuSimulador;
+                    case 4:
+                        goto MenuCartao;
                     default:
                         Console.WriteLine("Opção invalida");
                         goto MenuSimulador;  
                 }
+
+            MenuCartao:
+                Console.WriteLine("1 - Gerar Cartao Credito");
+                Console.WriteLine("2 - Gerar Cartao Debito");
+                Console.WriteLine("3 - Comprar com cartao");
+                Console.WriteLine("0 - Sair");
+                opcao = Convert.ToInt32(Console.ReadLine());
+                Random rn = new Random();
+                switch (opcao)
+                {
+                    case 1:
+                        Console.WriteLine("Limite:");
+                        int limite = Convert.ToInt32(Console.ReadLine());
+                        if (clienteLogado.addCartaoCredito(new CartaoCredito(rn.Next(1, 213512123), cx.getConta(), limite)))
+                        {
+                            Console.WriteLine("Cartão liberado");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Voce ja possui o cartao");
+                        };
+                        goto MenuCartao;
+                    case 2:
+                        if (clienteLogado.addCartaoDebito(new CartaoDebito(rn.Next(1, 213512123), cx.getConta())))
+                        {
+                            Console.WriteLine("Cartão liberado");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Voce ja possui o cartao");
+                        };
+                        goto MenuCartao;
+                    case 3:
+                        Console.WriteLine("1 - Credito");
+                        Console.WriteLine("2 - Debito");
+                        opcao = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Valor:");
+                        valor = Convert.ToDouble(Console.ReadLine());
+                        if (opcao == 1)
+                        {
+                            if (clienteLogado.CartaoCr.comprar(valor))
+                            {
+                                Console.WriteLine("Transação aprovada.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Transação negada.");
+                            }
+                        }
+                        else if (opcao == 2)
+                        {
+                            if (clienteLogado.CartaoDb.comprar(valor))
+                            {
+                                Console.WriteLine("Transação aprovada.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Transação negada.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Opção invalida!");
+                        }
+                        goto MenuCartao;
+                    case 0:
+                        goto MenuConta;
+                    default:
+                        Console.WriteLine("Opção invalida!");
+                        goto MenuCartao;
+
+                }
+
             }
+        Finish:
+            Console.WriteLine("Bye");
         }
     }
 }

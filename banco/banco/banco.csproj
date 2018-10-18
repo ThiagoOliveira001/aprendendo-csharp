@@ -43,6 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caixa.cs" />
+    <Compile Include="Cartao.cs" />
+    <Compile Include="CartaoCredito.cs" />
+    <Compile Include="CartaoDebito.cs" />
+    <Compile Include="Cliente.cs" />
     <Compile Include="Conta.cs" />
     <Compile Include="ContaCorrente.cs" />
     <Compile Include="ContaPoupanca.cs" />
