@@ -11,11 +11,17 @@ namespace Api.Controllers
     public class ClientesController : ApiController
     {
         private static List<Cliente> clientes = new List<Cliente>();
-
+        
         [HttpGet]
         public List<Cliente> selecionar()
         {
             return clientes;
+        }
+        
+        [HttpGet]
+        public Cliente buscar([FromUri] int id)
+        {
+            return clientes[id];
         }
 
         [HttpPost]
@@ -23,10 +29,37 @@ namespace Api.Controllers
         {
             if (!string.IsNullOrEmpty(cliente.nome))
             {
-                clientes.Add(new Cliente(cliente.nome));
+                clientes.Add(new Cliente(cliente.nome,clientes.Count));
+            }
+        }
+        
+
+        [HttpPut]
+        public void alterar([FromBody] Cliente cli, [FromUri] int id)
+        {
+            foreach (Cliente cl in clientes)
+            {
+                if (cl.id == id)
+                {
+                    cl.nome = cli.nome;
+                }
             }
         }
 
-
+        [HttpDelete]
+        public void deletar([FromUri] int id)
+        {
+            clientes.RemoveAt(id);
+            foreach (Cliente cl in clientes)
+            {
+                cl.id = clientes.IndexOf(cl);
+            }
+        }
+        
+        [HttpDelete]
+        public void deletarTodos()
+        {
+            clientes.Clear();
+        }
     }
 }

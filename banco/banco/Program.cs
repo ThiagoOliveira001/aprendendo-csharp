@@ -28,7 +28,14 @@ namespace banco
                     string nome = Console.ReadLine();
                     Console.WriteLine("CPF:");
                     string cpf = Console.ReadLine();
-                    Console.WriteLine("Codigo: {0}",cx.cadastrarCliente(nome, cpf));
+                    int cod = cx.cadastrarCliente(nome, cpf);
+                    if (cod >= 0)
+                    {
+                        Console.WriteLine("Codigo: {0}", cod);
+                    } else
+                    {
+                        Console.WriteLine("CPF já cadastrado.");
+                    }
                     goto MenuCliente;
                 case 2:
                     Console.WriteLine("Codigo:");

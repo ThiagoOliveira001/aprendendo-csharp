@@ -7,11 +7,13 @@ namespace Api.Models
 {
     public class Cliente
     {
-        public string nome { get; set; }
+        public string nome;
+        public int id;
 
-        public Cliente(string nome)
+        public Cliente(string nome,int id)
         {
-            this.nome = nome;    
+            this.nome = nome;
+            this.id = id;
         }
     }
 }

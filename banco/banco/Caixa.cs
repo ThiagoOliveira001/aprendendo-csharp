@@ -32,6 +32,10 @@ namespace banco
 
         public int cadastrarCliente(string nome, string cpf)
         {
+            foreach (Cliente cl in clientes)
+            {
+                if (cl.Cpf.Equals(cpf)) return -1;
+            }
             clientes.Add(new Cliente(nome, cpf));
             return clientes.Count;
         }
