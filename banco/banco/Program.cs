@@ -47,14 +47,14 @@ namespace banco
                 case 0:
                     goto Finish;
                 default:
-                    Console.WriteLine("Opcao invalida!");
+                    Console.WriteLine("Opção inválida!");
                     goto MenuCliente;
             }
         
         Menu:
             for (;;)
             {
-                Console.WriteLine("Opcoes");
+                Console.WriteLine("Opções");
                 Console.WriteLine("1 - Criar conta corrente");
                 Console.WriteLine("2 - Criar conta poupanca");
                 Console.WriteLine("3 - Utilizar conta");
@@ -93,7 +93,7 @@ namespace banco
                 }
                 else
                 {
-                    Console.WriteLine("Opcao invalida!");
+                    Console.WriteLine("Opção inválida!");
                     break;
                 }
 
@@ -134,11 +134,11 @@ namespace banco
                             opcao = Convert.ToInt32(Console.ReadLine());
                             if (!cx.transferir(cx.getConta(opcao),valor))
                             {
-                                Console.WriteLine("Não é possivel efetuar a transferencia!");
+                                Console.WriteLine("Não é possivel efetuar a transferência!");
                             }
                             else
                             {
-                                Console.WriteLine("Tranferencia realizada.");
+                                Console.WriteLine("Transferência realizada.");
                             }
                             goto MenuConta;
                         case 0:
@@ -177,8 +177,23 @@ namespace banco
                         String str = Console.ReadLine();
                         double[] porcentagens;
                         str.Trim();
-                        porcentagens = Array.ConvertAll(str.Split(','), Double.Parse);
-                        Console.WriteLine("Valor final R${0}",sm.calculaInvestimentoBolsa(valor, porcentagens));
+                        try
+                        {
+                            porcentagens = Array.ConvertAll(str.Split(','), Double.Parse);
+                            Console.WriteLine("Valor final R${0}", sm.calculaInvestimentoBolsa(valor, porcentagens));
+                        }
+                        catch (InvalidCastException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        catch(InvalidOperationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        catch(FormatException e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
                         goto MenuSimulador;
                     case 4:
                         goto MenuCartao;
