@@ -18,7 +18,7 @@ namespace banco
         MenuCliente:
             Console.WriteLine("1 - Cadastrar");
             Console.WriteLine("2 - Entrar (Digite seu codigo para acessar)");
-            Console.WriteLine("3 - Ver Clientes");
+            Console.WriteLine("3 - Listar Clientes");
             Console.WriteLine("0 - Sair");
             opcao = Convert.ToInt32(Console.ReadLine());
             switch (opcao)
@@ -57,7 +57,7 @@ namespace banco
                 Console.WriteLine("Opcoes");
                 Console.WriteLine("1 - Criar conta corrente");
                 Console.WriteLine("2 - Criar conta poupanca");
-                Console.WriteLine("3 - Ver contas");
+                Console.WriteLine("3 - Utilizar conta");
                 Console.WriteLine("4 - Simular investimento");
                 Console.WriteLine("0 - Encerrar operacao");
                 opcao = Convert.ToInt32(Console.ReadLine());
@@ -104,6 +104,7 @@ namespace banco
                     Console.WriteLine("2 - Sacar");
                     Console.WriteLine("3 - Saldo");
                     Console.WriteLine("4 - Cartao");
+                    Console.WriteLine("5 - Transferir");
                     Console.WriteLine("0 - Sair");
                     opcao = Convert.ToInt32(Console.ReadLine());
                     switch (opcao)
@@ -123,6 +124,20 @@ namespace banco
                             goto MenuConta;
                         case 4:
                             goto MenuCartao;
+                        case 5:
+                            Console.WriteLine("Valor:");
+                            valor = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("Conta de destino: \n {0}", cx.getContas());
+                            opcao = Convert.ToInt32(Console.ReadLine());
+                            if (!cx.transferir(cx.getConta(opcao),valor))
+                            {
+                                Console.WriteLine("Não é possivel efetuar a transferencia para esta conta!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Tranferencia realizada.");
+                            }
+                            goto MenuConta;
                         case 0:
                             goto Menu;
                         default:

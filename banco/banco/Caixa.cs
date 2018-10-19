@@ -81,7 +81,7 @@ namespace banco
 
         public Conta getConta(int numero)
         {
-            return contas[this.Codigo];
+            return contas[numero - 1];
         }
 
         public Conta getConta()
@@ -103,6 +103,14 @@ namespace banco
         public Cliente getCliente(int cod)
         {
             return clientes[cod - 1];
+        }
+
+        public bool transferir(Conta destino, double valor)
+        {
+            if (contas[this.Codigo].Numero == destino.Numero) return false;
+            contas[this.Codigo].sacar(valor);
+            destino.depositar(valor);
+            return true;
         }
     }
 }

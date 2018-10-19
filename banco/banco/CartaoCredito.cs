@@ -15,7 +15,7 @@ namespace banco
         {
             this.Limite = limite;
         }
-
+     
         public override bool comprar(double valor)
         {
             if (this.Limite >= (this.Debito + valor))
