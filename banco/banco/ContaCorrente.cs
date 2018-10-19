@@ -15,15 +15,12 @@ namespace banco
             this.Info = "Conta Corrente";
         }
 
-        public override void depositar(double valor)
+        public override bool sacar(double valor)
         {
-            this.Saldo += valor;
-        }
-
-        public override void sacar(double valor)
-        {
+            if (this.Saldo < valor) return false;
             this.Saldo -= this.taxa;
             this.Saldo -= valor;
+            return true;
         }
 
     }

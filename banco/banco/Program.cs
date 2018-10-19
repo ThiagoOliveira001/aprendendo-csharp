@@ -117,7 +117,10 @@ namespace banco
                         case 2:
                             Console.WriteLine("Valor do saque:");
                             valor = Convert.ToDouble(Console.ReadLine());
-                            cx.sacar(valor);
+                            if (!cx.sacar(valor))
+                            {
+                                Console.WriteLine("Saldo insuficiente!");
+                            }
                             goto MenuConta;
                         case 3:
                             Console.WriteLine("Saldo: R${0}", cx.getSaldo());
@@ -131,7 +134,7 @@ namespace banco
                             opcao = Convert.ToInt32(Console.ReadLine());
                             if (!cx.transferir(cx.getConta(opcao),valor))
                             {
-                                Console.WriteLine("Não é possivel efetuar a transferencia para esta conta!");
+                                Console.WriteLine("Não é possivel efetuar a transferencia!");
                             }
                             else
                             {

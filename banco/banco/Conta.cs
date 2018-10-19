@@ -20,8 +20,11 @@ namespace banco
             this.Titular = titular;
         }
 
-        public abstract void depositar(double valor);
+        public virtual void depositar(double valor)
+        {
+            this.Saldo += valor;
+        }
 
-        public abstract void sacar(double valor);
+        public abstract bool sacar(double valor);
     }
 }

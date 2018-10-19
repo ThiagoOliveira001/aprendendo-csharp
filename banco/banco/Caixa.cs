@@ -58,9 +58,10 @@ namespace banco
             return contas[this.Codigo].Saldo;
         }
 
-        public void sacar(double valor)
+        public bool sacar(double valor)
         {
-            contas[this.Codigo].sacar(valor);
+            if (contas[this.Codigo].sacar(valor)) return true;
+            return false;
         }
 
         public void depositar(double valor)
@@ -108,7 +109,7 @@ namespace banco
         public bool transferir(Conta destino, double valor)
         {
             if (contas[this.Codigo].Numero == destino.Numero) return false;
-            contas[this.Codigo].sacar(valor);
+            if (!contas[this.Codigo].sacar(valor)) return false;
             destino.depositar(valor);
             return true;
         }
